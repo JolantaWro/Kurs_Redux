@@ -1,16 +1,16 @@
 // Tutaj zaimplementuj akcje do aplikacji bankApp
+const WITHDRAW = 'WITHDRAW';
+const DEPOSIT = 'DEPOSIT';
 
-const WITHDRAW = "WITHDRAW";
-const DEPOSIT = "DEPOSIT";
-
-const depositMoney = (value) => ({
+const depositMoney = (updateValue) => ({
     type: DEPOSIT,
-    payload: value
+    payload: updateValue
 })
 
-const withdrawMoney = (value) => ({
+const withdrawMoney = (updateValue) => ({
     type: WITHDRAW,
-    payload: value
+    payload: updateValue
 })
+
 
 export { WITHDRAW, DEPOSIT, withdrawMoney, depositMoney };

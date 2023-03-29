@@ -1,5 +1,10 @@
 // Tu powinny się znaleźć odpowiednie importy
 
+import {createStore} from "redux";
+import {depositMoney, withdrawMoney} from "./redux/actions/bankActions";
+import combinedReducer from "./redux/reducers/index";
+import bankReducer from "./redux/reducers/bank";
+
 const bankApp = {
 
   start(rootElement) {
@@ -39,9 +44,14 @@ const bankApp = {
   // Następnie zapisać się na zmiany i na każdą z nich
   // zamienić wartość tekstu w elemencie `saldoEl` na wartość ze store + PLN
   // np. this.saldoEl.innerText = `wartosc-ze-store PLN`
-  createStore() {
 
+
+  createStore() {
+    // this.store = createStore(bankReducer);
+    this.store = createStore(combinedReducer);
+    this.store.subscribe(() => this.saldoEl.innerText = `${this.store.getState().balance} PLN`);
   },
+
 
   // W tej metodzie należy podpiąć pod odpowiednie przyciski event handlery,
   // które odpalą nam odpowiednie akcje
@@ -49,6 +59,15 @@ const bankApp = {
   // this.withdrawEl
   // this.depositEl
   applyHandlers() {
+    this.depositEl.addEventListener("click", () => {
+      this.store.dispatch(depositMoney(parseInt(this.inputEl.value)))
+      this.inputEl.value = null;
+    })
+    this.withdrawEl.addEventListener("click", () => {
+      this.store.dispatch(withdrawMoney(parseInt(this.inputEl.value)))
+      this.inputEl.value = null;
+    })
+
 
   }
 };
