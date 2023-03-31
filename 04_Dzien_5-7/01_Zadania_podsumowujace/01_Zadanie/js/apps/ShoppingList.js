@@ -46,7 +46,6 @@ class ShoppingList {
     const elementLi = document.createElement("Li")
     elementLi.classList = "list-group-item d-flex justify-content-between align-items-center"
     store.getState().products.forEach(el => elementLi.innerText = el)
-    // elementLi.innerText = store.getState().products.forEach(el => el)
     this.shopList.appendChild(elementLi)
   }
 
