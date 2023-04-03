@@ -36,38 +36,42 @@ class ShoppingList {
 
   reduxConnect() {
     store.subscribe(() => {
+      this.shopList.innerHTML = "";
       this.createLi()
     })
-    store.subscribe(() => console.log(store.getState().products.productsList.sort((a,b) => b.id - a.id)))
-    store.getState().products.productsList.sort((a,b) => b.id - a.id)
+    const unsubscribe = store.subscribe(() => {
+      console.log(store.getState().products.sort((a,b) => b.id - a.id));
+    });
+
 
   }
 
   createLi() {
-    const elementDiv = document.createElement("div")
-    const elementLi = document.createElement("Li")
-    elementLi.classList = "list-group-item d-flex justify-content-between align-items-center"
+    store.getState().products.forEach(element => {
+      let elementDiv = document.createElement("div")
+      let elementLi = document.createElement("Li")
+      elementLi.classList = "list-group-item d-flex justify-content-between align-items-center"
+      elementLi.innerText = element
+      let elementButtonUp = document.createElement("button");
+      elementButtonUp.innerText = "UP";
+      elementButtonUp.classList.add("UP");
+      elementButtonUp.value = element;
 
-    store.getState().products.productsList.forEach(el => {
-      elementLi.innerText = el.text
-      this.elementButtonUp = document.createElement("button");
-      this.elementButtonUp.innerText = "UP";
-      this.elementButtonUp.classList.add("upClass");
-      this.elementButtonUp.value = el.id;
+      let elementButtonDown = document.createElement("button");
+      elementButtonDown.innerText = "DOWN";
+      elementButtonDown.classList.add("DOWN");
+      elementButtonDown.value = element;
 
-      this.elementButtonDown = document.createElement("button");
-      this.elementButtonDown.innerText = "DOWN";
-      this.elementButtonDown.classList.add("downClass");
-      this.elementButtonUp.value = el.id;
+      elementLi.append(elementButtonUp, elementButtonDown);
+      elementDiv.appendChild(elementLi)
+      this.shopList.appendChild(elementDiv)
+
     })
-
-    elementLi.append(this.elementButtonUp, this.elementButtonDown);
-    elementDiv.appendChild(elementLi)
-
-    this.shopList.appendChild(elementDiv)
-    this.elementButtonUp.addEventListener("click", (e)=> store.dispatch(changeOrder(parseInt(e.target.value))))
-    this.elementButtonDown.addEventListener("click", (e)=> console.log("Down", e.target.value))
-
+    this.shopList.querySelectorAll("li button").forEach((btn) => btn.addEventListener("click", (e) => {
+      const product = e.target.value;
+      const action = e.target.classList.value;
+      store.dispatch(changeOrder({product, action}))
+    }))
   }
 
   applyHandlers() {

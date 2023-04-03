@@ -20,9 +20,12 @@ const addProduct = (updateValue) => ({
     payload: updateValue
 })
 
-const changeOrder = (updateValue) => ({
+const changeOrder = ({product, action}) => ({
     type: CHANGE_ORDER,
-    payload: updateValue
+    payload: {
+        product: product,
+        action: action
+    }
 })
 
 export { INCREMENT, DECREMENT, ADD_PRODUCT, CHANGE_ORDER, increment, decrement, addProduct, changeOrder };
