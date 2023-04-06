@@ -1,4 +1,4 @@
-import {QUOTE_ERROR, QUOTE_FETCHED, QUOTE_FETCHING} from "./actions";
+import {ADD_FAV, QUOTE_ERROR, QUOTE_FETCHED, QUOTE_FETCHING} from "./actions";
 import {combineReducers} from "redux";
 
 
@@ -32,8 +32,17 @@ function reducerQuote (state=initialState, action) {
     }
 }
 
+function reducerFavourites(state=[], action) {
+    switch (action.type) {
+        case ADD_FAV:
+            return [...state, action.payload]
+    }
+
+}
+
 const rootReducers = combineReducers({
-    quote: reducerQuote
+    quote: reducerQuote,
+    favourites: reducerFavourites
 })
 
 export default rootReducers;
