@@ -22,11 +22,14 @@ const reducerLaunched = (state=initialState, action) => {
             return state
     }
 }
-
-const reducerCounter = (state=0, action) => {
+//zmienic state
+const reducerCounter = (state=5, action) => {
     switch(action.type) {
         case DECREMENT:
-            return state - 1
+            if(state <= 0) {
+                return state
+            }
+            return state - 1;
         default:
             return state
     }
