@@ -11,7 +11,7 @@ const startFetching = () => ({
 
 const quoteFetched = (value) => ({
     type: QUOTE_FETCHED,
-    payload: {value}
+    payload: value
 
 });
 
@@ -20,18 +20,22 @@ const quoteError = (value) => ({
     payload: value
 });
 
-const fetchQuote = () => (dispatch) => {
-    dispatch(startFetching);
-    api.fetchQuote()
-        .then((response) => {
-            dispatch(quoteFetched({response}))
-        })
-        .catch((err) => {
-            quoteError(err)
-        })
+const addToFavourites = (value) => ({
+    type: ADD_FAV,
+    payload: value
+});
 
+const fetchQuoteAsync = () => {
+    return async function(dispatch) {
+        dispatch(startFetching());
+        try{
+            const quote = await api.fetchQuote();
+            dispatch(quoteFetched(quote))
+        } catch (error) {
+            dispatch(quoteError(error))
+        }
+    }
 }
 
-// const { results } = await (await.response).json();
-
-export { QUOTE_FETCHING, QUOTE_FETCHED, QUOTE_ERROR, ADD_FAV, startFetching, quoteError, quoteFetched, fetchQuote }
+export { QUOTE_FETCHING, QUOTE_FETCHED, QUOTE_ERROR, ADD_FAV, startFetching, quoteError, quoteFetched,
+    fetchQuoteAsync, addToFavourites }

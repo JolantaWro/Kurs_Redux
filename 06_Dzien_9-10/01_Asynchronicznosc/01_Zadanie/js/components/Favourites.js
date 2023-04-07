@@ -4,11 +4,26 @@
 // };
 
 import Favourites from "../containers/Favourites";
+// import React from 'react';
+
+// const Favourites = (props) =>
+//     <ul>
+//         {props.favourites.map((element, index) => <li kay={index}>{element}</li>)}
+//     </ul>
+//
+// export default Favourites;
 import React from 'react';
 
-const Favourites = (props) =>
-    <ul>
-        {props.favourites.list.map((element, index) => <li kay={index}>{element}</li>)}
-    </ul>
+const FavouritesArray = ({favourites}) => {
+    console.log(favourites)
+    return (
+        <div>
+            <ul>
+                {favourites.map((element, index) => <li kay={index}>{element.quote}</li>)}
+            </ul>
 
-export default Favourites;
+        </div>
+    );
+};
+
+export default FavouritesArray;
