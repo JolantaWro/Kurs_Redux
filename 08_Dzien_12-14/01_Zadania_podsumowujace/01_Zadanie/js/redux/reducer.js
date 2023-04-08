@@ -1,4 +1,4 @@
-import {DECREMENT, LAUNCHED, LAUNCHING} from "./actions";
+import {DECREMENT, LAUNCHING} from "./actions";
 import {combineReducers} from "redux";
 
 const initialState = {
@@ -13,29 +13,16 @@ const reducerLaunched = (state=initialState, action) => {
                 ...state,
                 launched: true
             }
-        case LAUNCHED:
+        case DECREMENT:
             return {
                 ...state,
-                launched: false
+                counter: state.counter - 1
             }
-        default:
-            return state
-    }
-}
-//zmienic state
-const reducerCounter = (state=5, action) => {
-    switch(action.type) {
-        case DECREMENT:
-            if(state <= 0) {
-                return state
-            }
-            return state - 1;
         default:
             return state
     }
 }
 
 export const rootReducer = combineReducers({
-    rocket: reducerLaunched,
-    counter: reducerCounter
+    rocket: reducerLaunched
 })

@@ -1,19 +1,12 @@
 const LAUNCHING = "LAUNCHING";
-const LAUNCHED = "LAUNCHED";
 const DECREMENT = "DECREMENT";
-
 const startLaunching = () => ({
     type: LAUNCHING
-})
-
-const launchedRocket = () => ({
-    type: LAUNCHED
-})
+});
 
 const decrementCounter = () => ({
     type: DECREMENT
 })
-
 
 const rocketAsync = () => {
     return function(dispatch) {
@@ -29,4 +22,4 @@ const rocketAsync = () => {
     }
 };
 
-export { LAUNCHING, LAUNCHED, DECREMENT, startLaunching, launchedRocket, decrementCounter, rocketAsync }
+export { LAUNCHING, DECREMENT, startLaunching, decrementCounter, rocketAsync }

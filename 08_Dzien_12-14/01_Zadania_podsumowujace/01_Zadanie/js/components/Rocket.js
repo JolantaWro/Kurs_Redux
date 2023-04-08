@@ -7,7 +7,6 @@ const Rocket = ({ isLaunched }) =>
   <img
     alt="rocket"
     src={imgSrc}
-    // className={`rocketlaunched`}
     className={`rocket ${isLaunched ? 'launched': ''}`}
   />;
 
