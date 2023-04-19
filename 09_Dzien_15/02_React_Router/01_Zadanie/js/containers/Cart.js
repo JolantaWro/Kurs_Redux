@@ -6,15 +6,12 @@ import React from 'react';
 import {connect} from "react-redux";
 import Cart from "../components/Cart";
 import {addProduct, removeProduct} from "../redux/actions";
-import {filterProductsPrice, sumPriceSelector} from "../redux/selectors";
-
+import { productsSelector, sumPriceSelector } from "../redux/selectors";
 
 
 const mapStateToProps = state => ({
-    products: state.products
-    // sum: sumPriceSelector(state.products)
-
-
+    products: productsSelector(state),
+    sum: sumPriceSelector(state)
 });
 
 //values: state.routes

@@ -6,8 +6,8 @@ import {Link, useParams} from "react-router-dom";
 const Cart = ({ products, sum, addProduct, removeProduct }) => {
     const { filterValue } = useParams();
 
-    console.log(filterValue)
-    console.log(useParams())
+    console.log("filterValue", filterValue)
+    console.log("sum", sum)
 
 
 
