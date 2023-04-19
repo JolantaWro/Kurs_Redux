@@ -12,13 +12,14 @@ class Form extends React.Component {
   onSubmit = (e) => {
     e.preventDefault();
     this.props.addProduct(this.state);
+    this.setState({name: "", price: ""})
     console.log(this.state);
   };
   handleChange = (e) => {
-    console.log(e.target.value);
     this.setState({
       [e.target.name]: e.target.value,
     });
+
   };
 
   render() {
