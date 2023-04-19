@@ -9,6 +9,6 @@ export const productsSelector = state => state.products
 export const sumPriceSelector = createSelector(
     productsSelector,
     products=> products.reduce((acc, item) => (
-        acc + item.price
+        acc + Number(item.price)
     ), 0)
 )

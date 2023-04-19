@@ -11,7 +11,7 @@ const App = () => {
             <BrowserRouter>
                 <Routes>
                     <Route path="/:filterValue" element={<Cart />} />
-                    <Route path="/" exact  element={<Cart />} />
+                    <Route path="" exact  element={<Cart />} />
                 </Routes>
             </BrowserRouter>
         </>
