@@ -9,9 +9,9 @@ const Cart = ({ products, sum, addProduct, removeProduct }) => {
     console.log("filterValue", filterValue)
     console.log("sum", sum, typeof sum)
 
-    useEffect(() => {
-        console.log("Products", products)
-    },[])
+    // useEffect(() => {
+    //     filterPrice(Number(filterValue))
+    // },[])
 
 
 

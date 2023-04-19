@@ -6,7 +6,7 @@ import React from 'react';
 import {connect} from "react-redux";
 import Cart from "../components/Cart";
 import {addProduct, removeProduct} from "../redux/actions";
-import { productsSelector, sumPriceSelector } from "../redux/selectors";
+import {getPriceValue, productsSelector, sumPriceSelector} from "../redux/selectors";
 
 
 const mapStateToProps = state => ({
@@ -19,7 +19,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     addProduct: (product) => dispatch(addProduct(product)),
     removeProduct: (product) => dispatch(removeProduct(product)),
-    // filterPrice: (value) => dispatch(filterProductsPrice(value))
+    // filterPrice: (value) => dispatch(getPriceValue(value))
 
 
 });
