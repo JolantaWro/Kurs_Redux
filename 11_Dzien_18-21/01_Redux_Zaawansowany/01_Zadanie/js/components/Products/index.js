@@ -1,6 +1,6 @@
 import React from "react";
 import Panel from "../Panel";
-import {connect} from "react-redux";
+// import {connect} from "react-redux";
 
 // const fakeProducts = [
 //   { id: 1, name: "Pomidory" },
@@ -25,8 +25,9 @@ const AllProducts = ({allProducts}) => {
   );
 };
 
-const mapStateToProps = state => ({
-  allProducts: state.products
-})
+// const mapStateToProps = state => ({
+//   allProducts: state.products
+// })
 
-export default connect(mapStateToProps)(AllProducts)
+//export default connect(mapStateToProps)(AllProducts)
+export default AllProducts;

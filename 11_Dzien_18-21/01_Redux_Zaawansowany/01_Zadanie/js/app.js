@@ -8,7 +8,10 @@ import store from './redux/store'
 
 // const container = document.getElementById("app");
 // const root = createRoot(container);
-// root.render(<Main />
+// root.render(
+//     <Provider store={store}>
+//         <Main />
+//     </Provider>
 // )
 ReactDOM.render(
     <Provider store={store}>

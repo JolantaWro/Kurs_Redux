@@ -1,6 +1,6 @@
-export const ADD_RECIPES = "ADD_RECIPES";
+export const ADD_RECIPE = "ADD_RECIPE";
 
-export const addRecipes = (recipe) => ({
-    type: ADD_RECIPES,
+export const addRecipe = (recipe) => ({
+    type: ADD_RECIPE,
     payload: recipe
 });

@@ -1,5 +1,6 @@
-import React from "react";
+import React, {useState} from "react";
 import PropTypes from "prop-types";
+import {useParams} from "react-router-dom";
 
 const fakeProducts = [
   {id: 1, name: "Pomidory"},
@@ -10,6 +11,11 @@ const fakeProducts = [
 ];
 
 const SingleProduct = ({id, index, number, onChange, onClose}) => {
+
+    // const [idProduct, setProductID] = useState(useParams().id)
+    //
+    // console.log(id)
+
   return (
     <article className="message is-dark">
       <div className="message-header">

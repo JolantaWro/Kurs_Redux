@@ -1,8 +1,20 @@
 import React, { Component } from "react";
 
 class AddProduct extends Component {
-  state = {
-    name: "",
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: ""
+    }
+  }
+
+  // state = {
+  //   name: "",
+  // };
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.props.onSaveProduct(this.state.name)
+    // this.setState({name: ""}) do poprawy
   };
 
   handleChange = (e) => {
@@ -11,10 +23,7 @@ class AddProduct extends Component {
     });
   };
 
-  handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(this.state);
-  };
+
 
   render() {
     return (

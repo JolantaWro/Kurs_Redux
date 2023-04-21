@@ -3,11 +3,19 @@ import SingleProduct from "./SingleProduct";
 
 
 class AddRecipe extends Component {
-  state = {
-    name: "",
-    products: [{key: 0}],
-    lastKey: 0
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: "",
+      products: [{key: 0}],
+      lastKey: 0
+    }
+  }
+  // state = {
+  //   name: "",
+  //   products: [{key: 0}],
+  //   lastKey: 0
+  // };
 
   handleChange = e => {
     this.setState({
@@ -18,6 +26,7 @@ class AddRecipe extends Component {
   handleSubmit = e => {
     e.preventDefault();
     console.log(this.state);
+    this.props.onSaveRecipe(this.state)
   };
 
   handleAddProduct = () => {
