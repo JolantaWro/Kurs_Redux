@@ -1,6 +1,6 @@
 import React from "react";
 import Panel from "../Panel";
-import {connect} from "react-redux";
+
 //
 // const fakeRecipes = [
 //   {
@@ -23,7 +23,7 @@ import {connect} from "react-redux";
 //   }
 // ];
 
-const AllRecipes = ({allRecipes}) => {
+const AllRecipes = ({ allRecipes }) => {
 
   return (
     <>

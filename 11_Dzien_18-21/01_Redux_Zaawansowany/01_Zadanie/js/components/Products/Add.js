@@ -13,8 +13,8 @@ class AddProduct extends Component {
   // };
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.onSaveProduct(this.state.name)
-    // this.setState({name: ""}) do poprawy
+    this.props.onProductAdd(this.state.name)
+    // this.setState({name: ""})
   };
 
   handleChange = (e) => {
