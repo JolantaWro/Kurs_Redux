@@ -1,6 +1,6 @@
 import React from 'react';
-import AllRecipes from "../../components/Recipes";
 import {connect} from "react-redux";
+import AllRecipes from "../../components/Recipes";
 
 const mapStateToProps = state => ({
     allRecipes: state.recipes

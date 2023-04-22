@@ -2,14 +2,14 @@ import React from "react";
 import LastRecipes from "./LastRecipes";
 import LastProducts from "./LastProducts";
 
-const Home = () => {
+const Home = ({lastProducts, lastRecipes}) => {
   return (
     <div className="columns">
       <div className="column is-one-third">
-        <LastRecipes/>
+        <LastRecipes lastRecipes={lastRecipes}/>
       </div>
       <div className="column is-one-third">
-        <LastProducts/>
+        <LastProducts lastProducts={lastProducts}/>
       </div>
     </div>
 

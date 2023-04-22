@@ -1,20 +1,10 @@
 import React from 'react';
-
 import {connect} from "react-redux";
-
-
-// const Products = ({ allProducts }) => {
-//
-//     return (
-//         <>
-//             <AllProducts allProducts={allProducts} />
-//         </>
-//     );
-// };
+import SingleProduct from "../../components/Products/SingleProduct";
+import {productsSelector} from "../../redux/selectors/selectorsProduct";
 
 const mapStateToProps = state => ({
-    product: state.products
+    allProducts: productsSelector(state)
 });
 
-
-export default connect(mapStateToProps)(AllProducts);
+export default connect(mapStateToProps)(SingleProduct);

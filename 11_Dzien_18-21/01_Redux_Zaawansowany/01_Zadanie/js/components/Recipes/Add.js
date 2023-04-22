@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import SingleProduct from "./SingleProduct";
+import SingleProduct from "../../containers/Products/SingleProduct";
 
 
 class AddRecipe extends Component {
@@ -8,14 +8,10 @@ class AddRecipe extends Component {
     this.state = {
       name: "",
       products: [{key: 0}],
-      lastKey: 0
+      lastKey: 0,
+      description: ""
     }
   }
-  // state = {
-  //   name: "",
-  //   products: [{key: 0}],
-  //   lastKey: 0
-  // };
 
   handleChange = e => {
     this.setState({
@@ -26,7 +22,9 @@ class AddRecipe extends Component {
   handleSubmit = e => {
     e.preventDefault();
     console.log(this.state);
-    this.props.onSaveRecipe(this.state)
+    console.log(this.state.products);
+
+    this.props.onRecipeAdd(this.state);
   };
 
   handleAddProduct = () => {
@@ -73,8 +71,8 @@ class AddRecipe extends Component {
             <div className="control">
               <input className="input"
                      type="text"
-                     name="desc"
-                     id="desc"
+                     name="description"
+                     id="description"
                      placeholder="Opis przepisu"
                      onChange={this.handleChange}/>
             </div>
