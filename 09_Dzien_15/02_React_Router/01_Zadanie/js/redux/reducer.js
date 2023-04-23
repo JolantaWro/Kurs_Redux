@@ -1,7 +1,3 @@
-// Reducer zwracający tablicę produktów
-
-
-
 import {ADD_PRODUCT, REMOVE_PRODUCT} from "./actions";
 import {combineReducers} from "redux";
 

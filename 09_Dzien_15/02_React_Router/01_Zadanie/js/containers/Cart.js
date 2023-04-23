@@ -2,11 +2,12 @@
 // oraz skorzystać z selektorów zaimplementowanych w pliku redux/selectors
 // pamiętaj o wyeksportowaniu kontenera:
 // export default connect(mapState, mapDispatch)(Cart);
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import {useParams} from "react-router-dom";
 import {connect} from "react-redux";
 import Cart from "../components/Cart";
 import {addProduct, removeProduct} from "../redux/actions";
-import {getPriceValue, productsSelector, sumPriceSelector} from "../redux/selectors";
+import {filteredProducts, productsSelector, sumPriceSelector} from "../redux/selectors";
 
 
 const mapStateToProps = state => ({
@@ -14,14 +15,24 @@ const mapStateToProps = state => ({
     sum: sumPriceSelector(state)
 });
 
-//values: state.routes
 
 const mapDispatchToProps = dispatch => ({
     addProduct: (product) => dispatch(addProduct(product)),
     removeProduct: (product) => dispatch(removeProduct(product)),
-    // filterPrice: (value) => dispatch(getPriceValue(value))
-
-
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Cart);
+
+const CartContainer = (props) => {
+    const { filterValue } = useParams();
+    const filteredProduct = filteredProducts(props.products, filterValue)
+
+
+
+    return (
+        <>
+            {filterValue ? <Cart { ...props} products={filteredProduct}  /> :  <Cart { ...props} products={props.products}  />}
+        </>
+    );
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(CartContainer);

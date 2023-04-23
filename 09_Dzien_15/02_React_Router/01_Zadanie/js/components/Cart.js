@@ -1,29 +1,20 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import Form from "./Form";
 import List from "./List";
-import {Link, useParams} from "react-router-dom";
+
 
 const Cart = ({ products, sum, addProduct, removeProduct }) => {
-    const { filterValue } = useParams();
+    console.log(sum)
+    const [sumValue, setSum] = useState(sum)
 
-    console.log("filterValue", filterValue)
-    console.log("sum", sum, typeof sum)
-
-    // useEffect(() => {
-    //     filterPrice(Number(filterValue))
-    // },[])
 
 
 
     return(
           <div>
-                <Link to={"/"}>Wszystkie</Link><br />
-                <Link to={"/10"}>do 10zł</Link><br />
-                <Link to={"/50"}>do 50zł</Link><br />
-                <Link to={"/100"}>do 100zł</Link><br />
-                <Form addProduct={addProduct} />
-                <List removeProduct={removeProduct} products={products} filterValue={filterValue}/>
-                <h1>Do zapłaty: {sum} PLN</h1>
+              <Form addProduct={addProduct} />
+              <List removeProduct={removeProduct} products={products} />
+              <h1>Do zapłaty: {sumValue} PLN</h1>
           </div>
       )
 }
