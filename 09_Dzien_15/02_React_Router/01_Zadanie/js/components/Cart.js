@@ -14,7 +14,7 @@ const Cart = ({ products, sum, addProduct, removeProduct }) => {
           <div>
               <Form addProduct={addProduct} />
               <List removeProduct={removeProduct} products={products} />
-              <h1>Do zapłaty: {sumValue} PLN</h1>
+              <h1>Do zapłaty: {sum} PLN</h1>
           </div>
       )
 }
