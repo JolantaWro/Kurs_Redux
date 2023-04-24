@@ -3,7 +3,7 @@
 
 import React from "react";
 
-const List = ({ products, removeProduct, filterValue }) => {
+const List = ({ products, removeProduct }) => {
 
     return (
         <ul>

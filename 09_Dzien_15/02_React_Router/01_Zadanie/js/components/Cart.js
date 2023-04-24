@@ -1,13 +1,9 @@
-import React, {useEffect, useState} from "react";
 import Form from "./Form";
 import List from "./List";
+import React from 'react'
 
 
 const Cart = ({ products, sum, addProduct, removeProduct }) => {
-    console.log(sum)
-    const [sumValue, setSum] = useState(sum)
-
-
 
 
     return(

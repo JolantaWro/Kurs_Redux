@@ -1,13 +1,10 @@
-// W tym pliku należy wykonać connect
-// oraz skorzystać z selektorów zaimplementowanych w pliku redux/selectors
-// pamiętaj o wyeksportowaniu kontenera:
-// export default connect(mapState, mapDispatch)(Cart);
 import React, {useEffect, useState} from 'react';
 import {useParams} from "react-router-dom";
 import {connect} from "react-redux";
 import Cart from "../components/Cart";
 import {addProduct, removeProduct} from "../redux/actions";
 import {filteredProducts, productsSelector, sumPriceSelector} from "../redux/selectors";
+
 
 
 const mapStateToProps = state => ({
@@ -26,7 +23,7 @@ const CartContainer = (props) => {
     const { filterValue } = useParams();
     const filteredProduct = filteredProducts(props.products, filterValue)
 
-    const sum = filteredProduct.reduce((acc, item) => (
+    const suma = filteredProduct.reduce((acc, item) => (
         acc + Number(item.price)
     ), 0)
 
@@ -34,9 +31,9 @@ const CartContainer = (props) => {
 
     return (
         <>
-            <Cart { ...props} products={filteredProduct} sum={sum} />
+            {filterValue ? <Cart { ...props} products={filteredProduct} sum={suma} /> :  <Cart { ...props} />}
         </>
-    );
+    )
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CartContainer);

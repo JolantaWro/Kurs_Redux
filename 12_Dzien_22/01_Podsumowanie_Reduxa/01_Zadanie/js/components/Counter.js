@@ -1,34 +1,17 @@
-// Counter
-import React, {useEffect, useRef} from 'react';
-import List from "./List";
+import React from "react";
+import {useNavigate} from "react-router-dom";
 
-const Counter = ({ isCounting, counterValue, listTime, addTimeToList, startCounterAsync, stopCounterAsync }) => {
-
-    const myRef = useRef()
-    console.log(myRef)
-
-    // useEffect(() => {
-    //     let intervalRunning;
-    //     if(isCounting) {
-    //         intervalRunning = setInterval(() => {
-    //             addValue(1)
-    //         }, 1000)
-    //     }
-    //     return () => clearInterval(intervalRunning)
-    //
-    // }, [isCounting])
-
+export const Counter = ({ value, startCounter, stopCounter, isCounting }) => {
 
     return (
-        <div>
-            {/*<button onClick={startCounter} ref={myRef}>start</button>*/}
-            {/*<button onClick={stopCounter} ref={myRef}>stop</button>*/}
-            <button onClick={startCounterAsync} ref={myRef}>start</button>
-            <button onClick={stopCounterAsync} ref={myRef}>stop</button>
-            <h1>{counterValue}</h1>
-            <List listTime={listTime}  addTimeToList={ addTimeToList} />
-        </div>
+        <>
+            <button onClick={() => startCounter()} disabled={isCounting}>
+                start
+            </button>
+            <button onClick={() => stopCounter()} disabled={!isCounting}>
+                stop
+            </button>
+            <h3>{value}</h3>
+        </>
     );
 };
-
-export default Counter;

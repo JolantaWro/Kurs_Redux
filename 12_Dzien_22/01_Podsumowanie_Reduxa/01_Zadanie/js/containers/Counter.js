@@ -1,53 +1,22 @@
-import React, {useRef, useState} from 'react';
-import Counter from "../components/Counter"
-import {connect} from "react-redux";
-import {addTime, counterAsync, counterAsyncStop, startCounter, stopCounter} from "../redux/actions";
+import { connect } from "react-redux";
+import { Counter } from "../components/Counter";
+import { startCounter, stopCounter } from "../redux/actions";
+
+// const { number } = useParams();
+//
+// useEffect(() => {
+//     updateStartingValue(parseInt(number, 10))
+// }, [number]);
 
 
-const CounterContainer = (props) => {
-    const [visible, setVisible] = useState(true);
-    const myRef = useRef()
-
-
-    // const changeVisible = () => {
-    //     myRef.current.style.disabled = visible
-    // }
-
-    // const handleStartRun = () => {
-    //     props.startCounter();
-    //     myRef.current.style.disabled = visible;
-    //     setVisible(false)
-    // }
-    //
-    // const handleStopRun = () => {
-    //     props.stopCounter();
-    //     myRef.current.style.disabled = visible
-    //     setVisible(true)
-    // }
-
-
-
-
-    return (
-        <>
-            <Counter {...props}/>
-        </>
-    );
-};
-
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
+    value: state.counter.value,
     isCounting: state.counter.isCounting,
-    counterValue: state.counter.value,
-    listTime: state.list
 });
 
-const mapDispatchToProps = dispatch => ({
-    startCounterAsync: () => dispatch(counterAsync()),
-    stopCounterAsync: () => dispatch(counterAsyncStop()),
-    // startCounter: () => dispatch(startCounter()),
-    // stopCounter: () => dispatch(stopCounter()),
-    // addValue: (value) => dispatch(addValue(value)),
-    addTimeToList: (value) => dispatch(addTime(value))
+const mapDispatchToProps = (dispatch) => ({
+    startCounter: () => dispatch(startCounter()),
+    stopCounter: () => dispatch(stopCounter()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(CounterContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(Counter);

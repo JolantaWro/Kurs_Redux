@@ -1,19 +1,14 @@
-import React from 'react';
-import {connect} from "react-redux";
-import {addTime} from "../redux/actions";
-import List from "../components/List";
+import { connect } from "react-redux";
+import { List } from "../components/List";
+import { addItem, removeItem } from "../redux/actions";
 
-
-const mapStateToProps = state => ({
-    listTime: state.list,
-    counterValue: state.counter.value
+const mapStateToProps = (state) => ({
+    list: state.list,
 });
 
-const mapDispatchToProps = dispatch => ({
-    addTimeToList: (value) => dispatch(addTime(value))
+const mapDispatchToProps = (dispatch) => ({
+    save: () => dispatch(addItem()),
+    remove: (idx) => dispatch(removeItem(idx)),
 });
-
-
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(List);

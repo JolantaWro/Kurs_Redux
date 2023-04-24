@@ -1,16 +1,14 @@
+import React from "react";
 
-import React from 'react';
-
-const List = ({listTime, addTimeToList, counterValue}) => {
-
-    return (
-        <div>
-            <button onClick={()=> console.log("Zapisz")}>zapisz</button>
-            <ul>
-                {listTime.map((element, index) => <li key={index}>{element}</li>)}
-            </ul>
-        </div>
-    );
-};
-
-export default List;
+export const List = ({ list, save, remove }) => (
+    <>
+        <button onClick={() => save()}>Zapisz</button>
+        <ul>
+            {list.map((el, idx) => (
+                <li key={idx} onClick={() => remove(idx)}>
+                    {el}
+                </li>
+            ))}
+        </ul>
+    </>
+);

@@ -1,52 +1,50 @@
-import {combineReducers} from "redux";
-import {ADD_TIME, ADD_VALUE, REMOVE_TIME, START_COUNTER, STOP_COUNTER} from "./actions";
+import { combineReducers } from "redux";
+import {
+    COUNTER_TICK,
+    COUNTER_STARTED,
+    COUNTER_STOPPED,
+    ITEM_ADDED,
+    ITEM_REMOVED,
+} from "./actions";
 
+const initialCounterState = { isCounting: false, value: 0, intervalId: null };
 
-const initialState = {
-    isCounting: false,
-    value: 0
-}
-const counterReducer = (state=initialState, action) => {
+const counter = (state = initialCounterState, action) => {
     switch (action.type) {
-        case START_COUNTER:
-            return {
-                isCounting: true,
-                value: state.value + 1
-            }
-        case STOP_COUNTER:
+        case COUNTER_STARTED:
             return {
                 ...state,
-                isCounting: false
-            }
-        // case ADD_VALUE:
-        //     return {
-        //         ...state,
-        //         value: state.value + 1
-        //     }
+                isCounting: true,
+                intervalId: action.payload.intervalId,
+            };
+
+        case COUNTER_STOPPED:
+            return { ...state, isCounting: false, intervalId: null };
+
+        case COUNTER_TICK: {
+            return { ...state, value: state.value + 1 };
+        }
+
         default:
-            return state
+            return state;
     }
+};
 
-}
-
-const listReducer = (state=[], action) => {
+const list = (state = [], action) => {
     switch (action.type) {
-        case ADD_TIME:
-            return [...state, action.payload]
-        case REMOVE_TIME:
-            return state.filter(element => element.id !== action.payload.id)
+        case ITEM_ADDED:
+            return [...state, action.payload.value];
+
+        case ITEM_REMOVED:
+            state.splice(action.payload.index, 1);
+            return [...state];
+
         default:
-            return state
+            return state;
     }
-}
+};
 
-
-
-
-
-const rootReducer = combineReducers({
-    counter: counterReducer,
-    list: listReducer
+export default combineReducers({
+    counter,
+    list,
 });
-
-export default rootReducer;
