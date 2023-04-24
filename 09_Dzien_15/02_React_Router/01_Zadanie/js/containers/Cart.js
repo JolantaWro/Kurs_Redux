@@ -26,11 +26,15 @@ const CartContainer = (props) => {
     const { filterValue } = useParams();
     const filteredProduct = filteredProducts(props.products, filterValue)
 
+    const sum = filteredProduct.reduce((acc, item) => (
+        acc + Number(item.price)
+    ), 0)
+
 
 
     return (
         <>
-            {filterValue ? <Cart { ...props} products={filteredProduct}  /> :  <Cart { ...props} products={props.products}  />}
+            <Cart { ...props} products={filteredProduct} sum={sum} />
         </>
     );
 };

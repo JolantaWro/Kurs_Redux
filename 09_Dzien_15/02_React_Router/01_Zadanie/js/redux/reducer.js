@@ -1,6 +1,7 @@
 import {ADD_PRODUCT, REMOVE_PRODUCT} from "./actions";
 import {combineReducers} from "redux";
 
+
 const reducerProducts = (state= [], action) => {
     switch (action.type) {
         case ADD_PRODUCT:

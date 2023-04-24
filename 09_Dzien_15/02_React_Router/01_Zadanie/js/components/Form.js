@@ -25,11 +25,11 @@ class Form extends React.Component {
   render() {
     const { name, price } = this.state;
     return (
-      <form onSubmit={this.onSubmit}>
-        <input type="text" name="name" placeholder="nazwa" onChange={this.handleChange} value={name} />
-        <input type="number" name="price" placeholder="cena" onChange={this.handleChange} value={price} />
-        <button type="submit">Dodaj produkt</button>
-      </form>
+        <form onSubmit={this.onSubmit}>
+          <input type="text" name="name" placeholder="nazwa" onChange={this.handleChange} value={name} />
+          <input type="number" name="price" placeholder="cena" onChange={this.handleChange} value={price} />
+          <button type="submit">Dodaj produkt</button>
+        </form>
     );
   }
 }
