@@ -1,13 +1,8 @@
 import { connect } from "react-redux";
 import { Counter } from "../components/Counter";
-import { startCounter, stopCounter } from "../redux/actions";
-
-// const { number } = useParams();
-//
-// useEffect(() => {
-//     updateStartingValue(parseInt(number, 10))
-// }, [number]);
-
+import {setValue, startCounter, stopCounter} from "../redux/actions";
+import React, {useEffect} from 'react';
+import {useParams} from "react-router-dom";
 
 const mapStateToProps = (state) => ({
     value: state.counter.value,
@@ -17,6 +12,26 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
     startCounter: () => dispatch(startCounter()),
     stopCounter: () => dispatch(stopCounter()),
+    setNewValue: (value)=> dispatch(setValue(value))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Counter);
+
+
+const CounterContainer = (props) => {
+    const { number } = useParams();
+
+    if(number) {
+        useEffect(() => {
+            props.setNewValue(parseInt(number))
+        }, [number]);
+    }
+
+
+    return (
+        <div>
+            <Counter {...props}/>
+        </div>
+    );
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(CounterContainer);

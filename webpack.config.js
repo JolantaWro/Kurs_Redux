@@ -1,7 +1,7 @@
 const path = require("path");
 const webpack = require("webpack");
 
-const entryPath = "09_Dzien_15/02_React_Router/01_Zadanie";
+const entryPath = "12_Dzien_22/01_Podsumowanie_Reduxa/01_Zadanie";
 
 module.exports = {
   mode: "none",

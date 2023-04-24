@@ -4,7 +4,7 @@ import {
     COUNTER_STARTED,
     COUNTER_STOPPED,
     ITEM_ADDED,
-    ITEM_REMOVED,
+    ITEM_REMOVED, SET_VALUE,
 } from "./actions";
 
 const initialCounterState = { isCounting: false, value: 0, intervalId: null };
@@ -23,6 +23,9 @@ const counter = (state = initialCounterState, action) => {
 
         case COUNTER_TICK: {
             return { ...state, value: state.value + 1 };
+        }
+        case SET_VALUE: {
+            return {...state, value: action.payload}
         }
 
         default:
