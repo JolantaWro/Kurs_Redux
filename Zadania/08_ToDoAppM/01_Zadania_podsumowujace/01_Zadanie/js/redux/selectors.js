@@ -6,8 +6,8 @@ export const tasksDoneSelector = (tasks) => {
 export const tasksToDoSelector = (tasks) => {
     return tasks.filter(item => item.open === true)
 }
-export const getTask = (task, selector) => {
-    return task.filter(element => element.id === selector)
+export const getTask = (tasks, selector) => {
+    return tasks.filter(element => element.id === selector)
 };
 
 //const selectProducts = (state) => {
@@ -15,7 +15,7 @@ export const getTask = (task, selector) => {
 //     try {
 //         price = price.price
 //         console.log(price)
-//         return state.items.filter(item => item.price <= price)
+//         return state.items.filter(item => item.pr"ice <= price)
 //     } catch {
 //         return state.items
 //     }
