@@ -1,13 +1,13 @@
 import React from 'react';
-import AddTask from "./AddTask";
+
 
 const AllTasks = ({tasks}) => {
 
-
-
     return (
         <>
-            {!tasks ? <h2>Brak zadań</h2> : tasks.map((element, index) => <li key={index}>{element.title}<br/>{element.description}</li>)}
+            {tasks.length === 0 && <div className="panel-block">Brak wpisów!</div>}
+
+            {tasks.length > 0 && tasks.map(el => (<li key={el.id}>{el.title}<br/>{el.description}</li>))}
         </>
     );
 };

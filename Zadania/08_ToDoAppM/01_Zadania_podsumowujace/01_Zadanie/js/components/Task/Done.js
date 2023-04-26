@@ -1,11 +1,12 @@
 import React from 'react';
 
-const Done = () => {
-
+const Done = ({taskDone}) => {
 
     return (
         <div>
-            <h2>Zrobione</h2>
+            {taskDone.length === 0 && <div className="panel-block">Brak wpisów!</div>}
+
+            {taskDone.length > 0 && taskDone.map(el => (<li key={el.id}>{el.title}<br/>{el.description}</li>))}
         </div>
     );
 };

@@ -1,10 +1,10 @@
 import React from 'react';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
-import Done from "./Task/Done";
-import Do from "./Task/Do";
-import AllTasks from "./Task";
 import Layout from "./Layout";
 import TasksContainer from "../containers/TasksContainer";
+import AddTask from "../containers/AddTask";
+import Done from "../containers/Done";
+import Do from "../containers/ToDo";
 
 const Main = () => {
     return (
@@ -12,10 +12,9 @@ const Main = () => {
             <BrowserRouter>
                 <Layout>
                     <Routes>
-                        <Route exact path="/" element={<AllTasks/>} />
-                        {/*<Route path="/movie" element={<MovieContainer />} />*/}
-                        {/*<Route path="/movie/:id" element={<SingleMovie/>} />*/}
-                        <Route path="/addTask" element={<TasksContainer />} />
+                        <Route exact path="/" element={<TasksContainer/>} />
+                        <Route path="/tasks/:id" element={<SingleTask/>} />
+                        <Route path="/addTask" element={<AddTask />} />
                         <Route path="/done" element={<Done />} />
                         <Route path="/do" element={<Do />} />
                     </Routes>

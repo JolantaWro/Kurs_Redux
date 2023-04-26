@@ -6,7 +6,12 @@ function maxIdTasks(array) {
     return maxId + 1
 }
 
-const initialState = []
+const initialState = [
+    // {title: "",
+    // description: "",
+    // open: true,
+    // id: 0}
+]
 
 const reducerTask = (state=initialState, action) => {
     switch(action.type) {

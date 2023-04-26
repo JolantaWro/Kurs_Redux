@@ -4,7 +4,6 @@ const AddTask = ({onSubmitTask}) => {
     const [form, setForm] = useState({title: "", description: "", open: true})
 
     const handleChangeInput = (e) => {
-        console.log(e)
         setForm({...form,
             [e.target.name]: e.target.value
         });
