@@ -1,5 +1,5 @@
 import {combineReducers} from "redux";
-import {ADD_TASK} from "./actions";
+import {ADD_TASK, REMOVE_TASK} from "./actions";
 
 function maxIdTasks(array) {
     const maxId = array.reduce((maxId, element) => Math.max(element.id, maxId), -1)
@@ -18,6 +18,8 @@ const reducerTask = (state=initialState, action) => {
         case ADD_TASK:
             const taskId = maxIdTasks(state)
             return [...state, {id: taskId, ...action.payload}]
+        case REMOVE_TASK:
+            return state.filter(element => element.id !== action.payload.id);
         default:
             return state
     }

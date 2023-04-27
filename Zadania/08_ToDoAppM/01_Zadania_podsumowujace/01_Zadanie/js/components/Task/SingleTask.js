@@ -1,19 +1,22 @@
 import React from 'react';
-import {useParams} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import {getTask} from "../../redux/selectors";
 
-const SingleTask = ({allTasks}) => {
-    console.log(allTasks)
+const SingleTask = ({allTasks, removeTask}) => {
 
     const {id} = useParams()
-    console.log(id)
     const filteredTasks = getTask(allTasks, parseInt(id))
+    console.log(filteredTasks)
 
     return (
         <div>
             {filteredTasks.length === 0 && <div className="panel-block">Brak wpisów!</div>}
 
-            {filteredTasks.length > 0 && <li key={filteredTasks.id}>{filteredTasks.title}<br/>{filteredTasks.description}</li>}
+            {filteredTasks.length > 0 && (filteredTasks.map(el => (
+                <>
+                <h2 key={el.id}>{el.id} {el.title} {el.description}</h2>
+                <button onClick={() => removeTask(el)}>Usuń</button></>
+            )))}
 
         </div>
     );

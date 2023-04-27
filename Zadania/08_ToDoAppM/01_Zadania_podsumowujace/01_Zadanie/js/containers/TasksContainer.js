@@ -1,14 +1,14 @@
 import React from 'react';
 import {connect} from "react-redux";
-import {addTask} from "../redux/actions";
+import {addTask, removeTask} from "../redux/actions";
 import AllTasks from "../components/Task";
 import AddTask from "../components/Task/AddTask";
 
-const TasksContainer = ({tasks}) => {
+const TasksContainer = ({tasks, removeTask}) => {
 
     return (
         <>
-            <AllTasks tasks={tasks} />
+            <AllTasks tasks={tasks} removeTask={removeTask} />
         </>
     );
 };
@@ -18,6 +18,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
+    removeTask: (task)=>dispatch(removeTask(task))
 })
 
 
