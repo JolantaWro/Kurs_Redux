@@ -1,5 +1,5 @@
 import {combineReducers} from "redux";
-import {ADD_TASK, REMOVE_TASK} from "./actions";
+import {ADD_TASK, CHANGE_TASK, REMOVE_TASK} from "./actions";
 
 function maxIdTasks(array) {
     const maxId = array.reduce((maxId, element) => Math.max(element.id, maxId), -1)
@@ -20,42 +20,20 @@ const reducerTask = (state=initialState, action) => {
             return [...state, {id: taskId, ...action.payload}]
         case REMOVE_TASK:
             return state.filter(element => element.id !== action.payload.id);
+        case CHANGE_TASK:
+            return state.map(todo => {
+                if(todo.id !== action.payload.id) {
+                    return todo;
+                }
+                return {
+                    ...todo,
+                    open: !todo.open
+                }
+            })
         default:
             return state
     }
 }
-
-
-// const products = (state= stateProduct, action) => {
-//     console.log(state)
-//     switch (action.type) {
-//         case ADD_PRODUCT:
-//             return [...state, action.payload]
-//         case CHANGE_ORDER:
-//             const newState = [...state];
-//             const index = state.findIndex((element) => element === action.payload.product);
-//             if(action.payload.action === "UP") {
-//                 if(!index) {
-//                     return state;
-//                 }
-//                 [newState[index - 1], newState[index]] = [newState[index], newState[index - 1]];
-//             } else {
-//                 if (index === newState.length - 1) {
-//                     return state;
-//                 }
-//                 const choseElement = newState[index];
-//                 newState.splice(index, 1);
-//                 newState.splice(index+1, 0, choseElement);
-//             }
-//
-//             return newState
-//
-//         default:
-//             return state
-//     }
-// }
-//
-//
 
 
 const rootReducer = combineReducers({
