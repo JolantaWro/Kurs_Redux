@@ -1,7 +1,7 @@
 const path = require("path");
 const webpack = require("webpack");
 
-const entryPath = "Zadania/08_ToDoAppM/01_Zadania_podsumowujace/01_Zadanie";
+const entryPath = "Zadania/06_Rakieta/01_Zadania_podsumowujace/01_Zadanie";
 
 module.exports = {
   mode: "none",
